@@ -11,7 +11,6 @@
  */
 
 type Strings = {
-  settingsHeading: string;
   serverName: string;
   serverDesc: string;
   tokenName: string;
@@ -58,7 +57,6 @@ type Strings = {
 };
 
 const EN: Strings = {
-  settingsHeading: "Connection",
   serverName: "Server",
   serverDesc: "Whisperer address. Change it only if you use a self-hosted instance.",
   tokenName: "Vault token",
@@ -108,7 +106,6 @@ const EN: Strings = {
 };
 
 const RU: Strings = {
-  settingsHeading: "Подключение",
   serverName: "Сервер",
   serverDesc: "Адрес Whisperer. Меняйте, только если у вас собственная установка.",
   tokenName: "Токен хранилища",

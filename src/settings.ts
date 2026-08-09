@@ -52,8 +52,9 @@ export class WhispererSettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
 
-    new Setting(containerEl).setName(t("settingsHeading")).setHeading();
-
+    // Заголовка в начале НЕТ намеренно: guidelines Obsidian просят открывать
+    // вкладку сразу настройками, а разделы озаглавливать только со второго.
+    // Заголовок «Подключение» здесь означал бы, что вся вкладка — про него.
     new Setting(containerEl)
       .setName(t("serverName"))
       .setDesc(t("serverDesc"))

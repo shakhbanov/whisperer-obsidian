@@ -1,0 +1,45 @@
+# Релиз плагина: тег → сборка → три файла в GitHub Release.
+#
+# Каталог плагинов Obsidian забирает `main.js`, `manifest.json` и `styles.css`
+# ИЗ ФАЙЛОВ РЕЛИЗА, а не из дерева репозитория, и имя тега обязано совпадать с
+# `version` в манифесте. Поэтому сборка автоматическая: собранный руками файл
+# однажды уехал бы в релиз из чужой ветки.
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Проверить, что тег совпадает с версией манифеста
+        run: |
+          manifest="$(node -p "require('./manifest.json').version")"
+          if [ "$manifest" != "${GITHUB_REF_NAME}" ]; then
+            echo "Тег ${GITHUB_REF_NAME} не совпадает с manifest.json ($manifest)" >&2
+            exit 1
+          fi
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          files: |
+            main.js
+            manifest.json
+            styles.css

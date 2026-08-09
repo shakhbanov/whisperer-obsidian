@@ -1,0 +1,10 @@
+{
+  "id": "whisperer-sync",
+  "name": "Whisperer Sync",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Keeps your notes in sync with your Whisperer knowledge base, so the assistant can answer from them.",
+  "author": "Whisperer",
+  "authorUrl": "https://whisperer.one",
+  "isDesktopOnly": false
+}

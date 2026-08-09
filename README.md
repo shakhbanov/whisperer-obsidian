@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Whisperer" width="96" height="96">
+</p>
+
 # Whisperer Sync
 
 Keep your Obsidian vault in sync with your [Whisperer](https://whisperer.one) knowledge

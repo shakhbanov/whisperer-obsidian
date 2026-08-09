@@ -1,8 +1,8 @@
 {
   "id": "whisperer-sync",
   "name": "Whisperer Sync",
-  "version": "1.0.0",
-  "minAppVersion": "1.5.0",
+  "version": "1.0.1",
+  "minAppVersion": "1.8.7",
   "description": "Keeps your notes in sync with your Whisperer knowledge base, so the assistant can answer from them.",
   "author": "Whisperer",
   "authorUrl": "https://whisperer.one",

@@ -117,7 +117,6 @@ export class WhispererSettingTab extends PluginSettingTab {
         slider
           .setLimits(5, 300, 5)
           .setValue(this.plugin.settings.syncDelaySeconds)
-          .setDynamicTooltip()
           .onChange(async (value) => {
             this.plugin.settings.syncDelaySeconds = value;
             await this.plugin.saveSettings();
@@ -131,7 +130,6 @@ export class WhispererSettingTab extends PluginSettingTab {
         slider
           .setLimits(15, 720, 15)
           .setValue(this.plugin.settings.syncIntervalMinutes)
-          .setDynamicTooltip()
           .onChange(async (value) => {
             this.plugin.settings.syncIntervalMinutes = value;
             await this.plugin.saveSettings();
@@ -174,6 +172,10 @@ export class WhispererSettingTab extends PluginSettingTab {
       .addButton((button) =>
         button
           .setButtonText(t("forgetButton"))
+          // `setWarning`, а не `setDestructive`: второй появился только в
+          // Obsidian 1.13, и ради оформления одной кнопки отрезать всех, кто
+          // сидит на 1.8–1.12, — плохой размен. Проверка каталога считает это
+          // рекомендацией, а не ошибкой.
           .setWarning()
           .onClick(async () => {
             await this.plugin.forgetSyncState();

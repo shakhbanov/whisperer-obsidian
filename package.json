@@ -1,7 +1,7 @@
 {
   "name": "whisperer-obsidian",
-  "version": "1.0.0",
-  "description": "Whisperer Sync — Obsidian plugin that keeps a vault in sync with the Whisperer knowledge base",
+  "version": "1.0.1",
+  "description": "Whisperer Sync \u2014 Obsidian plugin that keeps a vault in sync with the Whisperer knowledge base",
   "main": "main.js",
   "private": true,
   "scripts": {
@@ -19,9 +19,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "builtin-modules": "^4.0.0",
     "esbuild": "^0.24.2",
-    "obsidian": "^1.7.2",
+    "obsidian": "^1.13.0",
     "typescript": "^5.7.2"
   },
   "allowScripts": {

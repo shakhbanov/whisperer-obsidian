@@ -10,6 +10,8 @@
  * собственными надписями, и они обязаны быть на одном языке с ними.
  */
 
+import { getLanguage } from "obsidian";
+
 type Strings = {
   serverName: string;
   serverDesc: string;
@@ -156,18 +158,11 @@ const RU: Strings = {
 
 const DICTIONARIES: Record<string, Strings> = { en: EN, ru: RU };
 
-function currentLanguage(): string {
-  try {
-    // Настройка языка самого Obsidian. Обёрнута в try: в мобильной сборке и в
-    // тестовой среде localStorage может быть недоступен, и падать из-за надписи
-    // плагин не вправе.
-    return window.localStorage.getItem("language") || "en";
-  } catch {
-    return "en";
-  }
-}
-
-const STRINGS = DICTIONARIES[currentLanguage()] ?? EN;
+// Язык берёт САМ Obsidian: `getLanguage()` — его штатный способ сообщить, на
+// каком языке говорит интерфейс. Прежде мы читали `localStorage` напрямую, но
+// это внутреннее устройство редактора, а не контракт: оно вправе измениться без
+// предупреждения, и проверка каталога на такое чтение ругается.
+const STRINGS = DICTIONARIES[getLanguage()] ?? EN;
 
 /** Строка с подстановками вида `{name}`. */
 export function t(key: keyof Strings, vars: Record<string, string | number> = {}): string {
